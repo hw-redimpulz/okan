@@ -33,6 +33,8 @@ var Positions = mg.model('Positions');
 mg.model('Users',usersSchema);
 var Users = mg.model('Users');
 
+
+
 /*
   in:idとか時間とか座標とか
   out:格納したかどうか
