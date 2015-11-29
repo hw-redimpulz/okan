@@ -40,8 +40,7 @@ module.exports.shoki = function(imports,callback){
   var importsJason = JSON.parse(imports);
   Users.count({},function(co){
     onewUsers = new Users({
-      id:co + 1,
-      attribute:
+      id:co + 1
     });
   });
 }
