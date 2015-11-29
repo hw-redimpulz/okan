@@ -11,18 +11,17 @@ router.get('/', function(req, res, next) {
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
   socket.on('throwgps',function(result){
     //帰宅時間表示のトリガー
+    console.log(result);
   });
   socket.on('buchigire',function(message){
     //messageを子にpushする
+    console.log(message);
   });
   socket.on('shoki',function(result){
     //初期瀬底をdbに格納するよ
+    console.log(result);
   });
 });
 
