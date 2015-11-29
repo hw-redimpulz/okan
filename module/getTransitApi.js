@@ -1,14 +1,21 @@
 var client = require('cheerio-httpcli');
 var moment = require('moment');
 
-module.exports = function(startStation,endStation,callback){
-  var date = moment().format();
-  var year = moment().format("YYYY");
-  var month = moment().format("MM");
-  var day = moment().format("DD");
-  var hour = moment().format("HH");
-  var minute = moment().format("mm");
-  console.log(minute);
+module.exports = function(startStationName,endStationName,startTimeOffsetSeconds,callback){
+  var startStation = startStationName.replace(/駅/, "");
+  var endStation = endStationName.replace(/駅/, "");
+
+  //var date = moment().add(startTimeOfsetSeconds,"").format();
+  var now = moment();
+  var date = moment().add(startTimeOffsetSeconds,"seconds");
+  //console.log("now:"+now);
+  //console.log("date:"+date);
+  
+  var year = date.format("YYYY");
+  var month = date.format("MM");
+  var day = date.format("DD");
+  var hour = date.format("HH");
+  var minute = date.format("mm");
   var minute1 = minute.substr(0,1);
   var minute2 = minute.substr(1,1);
   //var etc = "&type=1&ticket=ic&al=1&shin=1&ex=1&hb=1&lb=1&sr=1&s=0&expkind=1&ws=2"
@@ -33,13 +40,18 @@ module.exports = function(startStation,endStation,callback){
         lines.push(line);
       }
     });
-    var data = {
-      "departure": year+"-"+month+"-"+day+"T"+startStationTimeStr+":00",
-      "arrival" : year+"-"+month+"-"+day+"T"+endStationTimeStr+":00"
-    }
-    console.log(data.departure);
-    console.log(data.arrival);
-    callback(data);
+    var arrival = year+"-"+month+"-"+day+"T"+endStationTimeStr+":00";
+    console.log("arrival"+arrival);
+    //var data = {
+    //  "departure": year+"-"+month+"-"+day+"T"+startStationTimeStr+":00",
+    //  "arrival" : year+"-"+month+"-"+day+"T"+endStationTimeStr+":00"
+    //}
+    //console.log(data.departure);
+    //console.log(data["arrival"]);
+    var duration = moment(arrival).unix() - date.unix();
+    //console.log(duration);
+    callback(duration);
   });
   
 }
+
