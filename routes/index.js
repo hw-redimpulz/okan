@@ -16,12 +16,13 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
   socket.on('throwgps',function(result){
-    atd.writeTodb(result,function(res){
-      console.log(res);
-    });
+    //帰宅時間表示のトリガー
+  });
+  socket.on('buchigire',function(message){
+    //messageを子にpushする
   });
   socket.on('shoki',function(result){
-    
+    //初期瀬底をdbに格納するよ
   });
 });
 

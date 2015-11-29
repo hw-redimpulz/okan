@@ -29,14 +29,22 @@ var usersSchema = new Schema({
     home:String,
     end:String
   }
-  ]
 },{collection:'users'});
 mg.model('Positions',positionsSchema);
 var Positions = mg.model('Positions');
 mg.model('Users',usersSchema);
 var Users = mg.model('Users');
 
-
+module.exports.shoki = function(imports,callback){
+  mg.connect('mongodb://localhost/okan');
+  var importsJason = JSON.parse(imports);
+  Users.count({},function(co){
+    onewUsers = new Users({
+      id:co + 1,
+      attribute:
+    });
+  });
+}
 
 /*
   in:idとか時間とか座標とか
