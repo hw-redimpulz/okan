@@ -13,19 +13,22 @@ var positionsSchema = new Schema({
 },{collections:'positions'});
 var usersSchema = new Schema({
   id:Number,
+  attribute:Boolean,
+  okanid:Number,
+  koid:Array,
   name:String,
   home:{
     lat:Number,
     lon:Number
   },
-  checkPoints:[
-    {
-      name:String,
-      position:{
-        lat:Number,
-        lon:Number
-      }
-    }
+  end:{
+    lat:Number,
+    lon:Number
+  },
+  moyori:{
+    home:String,
+    end:String
+  }
   ]
 },{collection:'users'});
 mg.model('Positions',positionsSchema);
