@@ -34,11 +34,12 @@ module.exports = function(startStation,endStation,callback){
       }
     });
     var data = {
-      "startTime":"",
-      "endTime" : ""
+      "departure": year+"-"+month+"-"+day+"T"+startStationTimeStr+":00",
+      "arrival" : year+"-"+month+"-"+day+"T"+endStationTimeStr+":00"
     }
-    console.log(startStationTimeStr);
-    console.log(endStationTimeStr);
+    console.log(data.departure);
+    console.log(data.arrival);
+    callback(data);
   });
   
 }
