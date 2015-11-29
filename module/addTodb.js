@@ -34,7 +34,7 @@ mg.model('Positions',positionsSchema);
 var Positions = mg.model('Positions');
 mg.model('Users',usersSchema);
 var Users = mg.model('Users');
-
+/*
 module.exports.shoki = function(imports,callback){
   mg.connect('mongodb://localhost/okan');
   var importsJason = JSON.parse(imports);
@@ -44,6 +44,7 @@ module.exports.shoki = function(imports,callback){
     });
   });
 }
+*/
 
 /*
   in:idとか時間とか座標とか
